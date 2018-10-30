@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>Hello, world!</title>
+  </head>
+
+  <body>
+    <script src="bundle.js"> </script>
+
+    <div class="container">
+      <div class="row">
+        <aside class="col-sm">
+          <div class="container personal-info">
+            <div class="row profile-photo">
+              <h1>{{r.name}}</h1>
+              <h1>{{r.info.label}}</h1>
+            </div>
+            <div class="row contact-info">
+                <a href="tel:{{{r.contact.phone}}">{{r.contact.phone}}</a>
+                <a href="mailto:{{{r.contact.email}}}">{{r.contact.email}}</a>
+            </div>
+
+            <div class="row about-me">
+              <p>
+                {{r.info.brief}}
+              </p>
+            </div>
+            <div class="row link-info">
+              <div class="container">
+              {{#each r.contact.other}}
+              <div class="row">
+                <h3>{{this.label}}</h3>
+                <a href="{{{this.value}}">{{this.value}}</a>                
+              </div>
+              {{/each}}
+            </div>
+            </div>
+          </div>
+        
+
+        </div>
+        <div class="col-md">
+            <div class="container ">
+                <div class="row profile-title">
+                                      
+                </div>
+                <div class="row contact-info">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md">
+                        <div class="container skills">
+                          
+                        </div>                       
+
+                      </div>
+                      <div class="col-md">
+                        <div class="container">
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>   
+                
+              </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+
+</html>
