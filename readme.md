@@ -1,4 +1,4 @@
-#Fresh-Plum Theme
+# Fresh-Plum Theme
 Project for a FRESH template called Plum, the template attempts to create a tidy single page resume which can be used on both a website and sending a pdf for printing purposes. 
 
 ## Building the template
