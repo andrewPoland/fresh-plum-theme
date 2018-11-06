@@ -8,9 +8,13 @@
     "popper.js": "^1.14.4"
   },
   "devDependencies": {
+    "ajv": "^6.5.5",
+    "ajv-keywords": "^3.2.0",
     "autoprefixer": "^9.3.1",
     "css-loader": "^1.0.1",
+    "hackmyresume": "^1.9.0-beta",
     "jquery": "^3.3.1",
+    "node-datetime": "^2.1.2",
     "node-sass": "^4.9.4",
     "postcss-loader": "^3.0.0",
     "precss": "^3.1.2",
@@ -21,7 +25,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js"
+    "build-bundle": "webpack --config webpack.config.js",
+    "build-resume": "hackmyresume build example/resume.json TO dist/resume.html -t ./",
+    "build": "npm run build-bundle & npm run build-resume"
   },
   "author": "",
   "license": "ISC"

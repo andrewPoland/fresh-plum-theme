@@ -1,80 +1,156 @@
 <!doctype html>
 <html lang="en">
 
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <title>Hello, world!</title>
-  </head>
+  <title>{{r.name}}</title>
+</head>
 
-  <body>
-    <script src="bundle.js"> </script>
+<body>
+  <script src="bundle.js"> </script>
 
-    <div class="container">
-      <div class="row">
-        <aside class="col-sm">
-          <div class="container personal-info">
-            <div class="row profile-photo">
-              <h1>{{r.name}}</h1>
-              <h1>{{r.info.label}}</h1>
-            </div>
-            <div class="row contact-info">
-                <a href="tel:{{{r.contact.phone}}">{{r.contact.phone}}</a>
-                <a href="mailto:{{{r.contact.email}}}">{{r.contact.email}}</a>
-            </div>
+    <div class="row">
+      <aside class="col-3">
+        <div class="container personal-info">
+          <div class="row profile-photo">
+            {{#if (isImage r.info.image)}}
+              <img src="{{{r.info.image}}}"/>
+            {{/if}}
+          </div>
+          <div class="row contact-info">
+            <h2>Contact Info</h2>
+            <ul>
+              <li>
+            <a href="tel:{{{r.contact.phone}}}">{{r.contact.phone}}</a>
+          </li>
+          <li>
+            <a href="mailto:{{{r.contact.email}}}">{{r.contact.email}}</a>
+          </li>
+          </ul>
+        </div>
 
-            <div class="row about-me">
-              <p>
-                {{r.info.brief}}
-              </p>
-            </div>
-            <div class="row link-info">
-              <div class="container">
+          <div class="row about-me">
+            <h2>About Me</h2>
+            <p>
+              {{r.info.brief}}
+            </p>
+          </div>
+          <div class="row link-info">
+            <div class="container">
+              <h2>My Links</h2>
+              <uL>
               {{#each r.contact.other}}
-              <div class="row">
+              <li>
                 <h3>{{this.label}}</h3>
-                <a href="{{{this.value}}">{{this.value}}</a>                
-              </div>
+                <p>
+                  <a href="{{{this.value}}}">{{this.value}}</a>
+                </p>
+              </li>
               {{/each}}
-            </div>
+            </uL>
             </div>
           </div>
-        
-
         </div>
-        <div class="col-md">
-            <div class="container ">
-                <div class="row profile-title">
-                                      
-                </div>
-                <div class="row contact-info">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md">
-                        <div class="container skills">
-                          
-                        </div>                       
+
+
+      </aside>
+      <div class="col-auto container">
+        
+          <div class="row profile-title">
+            <h1>{{r.name}}</h1>
+            <h1>{{r.info.label}}</h1>
+          </div>
+          <div class="row">     
+                <div class="col-8">
+                  <div class="container history">
+                    <h3>Experience</h3>
+                    {{#each r.employment.history}}
+                    <div class="experience-block">
+                      <div class="title row media">   
+                        <div class="media-body">
+                          <h2>{{this.position}}</h2>
+                          <span>{{this.employer}}</span>
+                          <div class="date-range">
+                            {{#if this.end}}
+                            {{this.start}} to {{this.end}}
+                            {{else}}
+                            since {{this.start}}
+                            {{/if}}
+                          </div>
+                        </div>                     
+                        {{#if (isImage this.url) }}
+                        <img class="align-self-end ml-3" alt="Employer logo" src="{{{this.url}}}" />
+                        {{/if}}
+
 
                       </div>
-                      <div class="col-md">
-                        <div class="container">
-
-                        </div>
+                      <div class="row">
+                        <p>
+                          {{this.summary}}
+                        </p>
+                      </div>
+                      <div class="row">
+                        <ul class="experience-highlights">
+                          {{#each this.highlights}}
+                          <li>{{this}}</li>
+                          {{/each}}
+                        </ul>
                       </div>
                     </div>
 
+
+                    {{/each}}
+
+                    <h3>Education</h3>
+                    {{#each r.education.history}}
+                    <div class="experience-block">
+                      <div class="title row">
+                        <h2>{{this.title}}</h2>
+                        <span>{{this.institution}}</span>
+                        <div class="date-range">
+                          {{#if this.end}}
+                          {{this.start}} to {{this.end}}
+                          {{else}}
+                          since {{this.start}}
+                          {{/if}}
+                        </div>
+                      </div>
+                    </div>
+                    {{/each}}
                   </div>
-
-                </div>   
-                
-              </div>
-        </div>
+                </div>
+                <div class="col-4">
+                  <div class="container">
+                    {{#each r.skills.sets}}
+                      <h2>{{this.name}}</h2>
+                      <ul class="skills">
+                        {{#each this.skills as |key|}}                          
+                          {{#each ../../r.skills.list}}                            
+                            {{#if (eq this.name key)}}
+                              <li>
+                                {{this.name}} 
+                                {{#times 5}}    
+                                  {{#if (lessThan @index (formatLevel this.level))}}                                                                 
+                                    <span>*</span>                                  
+                                  {{else}}
+                                    <span>-</span>                                  
+                                  {{/if}}
+                                {{/times}}
+                              </li>                            
+                            {{/if}}
+                          {{/each}}
+                        {{/each}}
+                      </ul>
+                    {{/each}}
+                  </div>
+                </div>              
+          </div>        
       </div>
-
-    </div>
-  </body>
+    </div>  
+</body>
 
 </html>
