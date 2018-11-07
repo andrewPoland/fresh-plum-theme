@@ -1,0 +1,117 @@
+@import "variables.scss";
+
+//headers
+h1,h2,h3 {
+    font-weight: 300;    
+    margin-bottom: 0;
+}
+
+h1 {
+    color: $backdrop-color;
+    font-size: 3rem;
+    width: 100%;
+}
+
+h2 {
+    color: $backdrop-color;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+}
+
+h3 {
+    color: $primary-color;
+    font-size: 2rem;
+}
+
+aside {
+    border-right: 1px solid $divider-color;    
+}
+
+.fa-ul {
+    margin-left: 2em;        
+}
+
+.fa-li {
+    width: auto;
+}
+
+//classes
+.profile-title {
+    border-bottom: 5px solid $divider-color;
+}
+
+.employer-title {
+    > span, div {
+    display: inline-block;
+    color: $subtext-font-color;    
+    }
+}
+
+.skill-rating {
+    
+    float: right;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+
+    .fas.fa-star {
+        color: $star-color;
+    }
+
+    .far.fa-star {
+        color: $secondary-backdrop-color;
+    }
+}
+
+.experience-location {
+    border-top: 1px solid $sub-divider-color;
+    padding-top: 1rem;
+    > span {
+        background: $sub-divider-color;
+        color: $secondary-backdrop-color;
+        padding: .2rem .4rem;
+        font-size: 0.8rem;
+        
+    }
+}
+
+.contact-info {
+    ul  {
+        width: 100%;
+
+        li {
+            text-align: left;
+            margin-right: -2em;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            background: $divider-color;
+            
+            i {
+                font-size: 1.4rem;
+                padding: 1rem;
+                border-right: 3px dashed white;
+            }
+
+            a {
+                font-size: 1.1rem;
+                margin-left: 0.8rem;
+                line-height: 3.3rem;
+            }
+        }
+    }
+}
+
+//ids
+#resume {    
+    background: $background-color;
+}
+
+#resume-content {
+    font-family: 'Spectral', serif;
+    font-weight: 200;
+    font-size: 1.1rem;
+    width: 90rem;
+    margin:auto;
+    background: white;
+    text-align: left;
+}
+

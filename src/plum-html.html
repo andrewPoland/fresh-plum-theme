@@ -4,77 +4,74 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 
 
   <title>{{r.name}}</title>
 </head>
 
 <body>
-  <script src="bundle.js"> </script>
-
+  <script src="bundle.js"> </script>    
+  <div id="resume">
+    <div id="resume-content">
     <div class="row">
       <aside class="col-3">
-        <div class="container personal-info">
+        <div class="container p-5"  id="personal-info">
           <div class="row profile-photo">
             {{#if (isImage r.info.image)}}
-              <img src="{{{r.info.image}}}"/>
+              <img width="100%" src="{{{r.info.image}}}"/>
             {{/if}}
           </div>
           <div class="row contact-info">
-            <h2>Contact Info</h2>
-            <ul>
-              <li>
-            <a href="tel:{{{r.contact.phone}}}">{{r.contact.phone}}</a>
-          </li>
-          <li>
-            <a href="mailto:{{{r.contact.email}}}">{{r.contact.email}}</a>
-          </li>
-          </ul>
-        </div>
+            <h3>Contact Info</h3>
+            <ul class="fa-ul">
+              <li class="fa-li">
+                <i class="fas fa-phone"></i>
+                <a href="tel:{{{r.contact.phone}}}">{{r.contact.phone}}</a>
+              </li>
+             <li class="fa-li">
+                <i class="fas fa-envelope"></i>
+              <a href="mailto:{{{r.contact.email}}}">{{r.contact.email}}</a>
+             </li>
+            </ul>
+          </div>
 
           <div class="row about-me">
-            <h2>About Me</h2>
+            <h3>About Me</h3>
             <p>
               {{r.info.brief}}
             </p>
           </div>
           <div class="row link-info">
-            <div class="container">
-              <h2>My Links</h2>
-              <uL>
+            
+              <h3>My Links</h3>
+              <uL class="fa-ul">
               {{#each r.contact.other}}
-              <li>
-                <h3>{{this.label}}</h3>
-                <p>
-                  <a href="{{{this.value}}}">{{this.value}}</a>
-                </p>
+              <li class="fa-li">                                             
+                {{this.label}} - <a href="{{{this.value}}}">{{this.value}}</a>                
               </li>
               {{/each}}
             </uL>
-            </div>
-          </div>
-        </div>
-
-
-      </aside>
-      <div class="col-auto container">
+          </div>                 
+      </aside>    
+      <div class="col-9 container p-5"  id="profile">
         
-          <div class="row profile-title">
+          <div class="row profile-title pb-5">
             <h1>{{r.name}}</h1>
             <h1>{{r.info.label}}</h1>
           </div>
-          <div class="row">     
-                <div class="col-8">
-                  <div class="container history">
-                    <h3>Experience</h3>
+          <div class="row profile-content pt-5">     
+                <div class="col-8 pl-0">
+                  <div class="history">
+                    <h2>Experience</h2>
                     {{#each r.employment.history}}
                     <div class="experience-block">
-                      <div class="title row media">   
-                        <div class="media-body">
-                          <h2>{{this.position}}</h2>
-                          <span>{{this.employer}}</span>
+                      <div class="title media">   
+                        <div class="media-body employer-title">
+                          <h3>{{this.position}}</h3>
+                          <span>{{this.employer}} </span>
                           <div class="date-range">
+                             • 
                             {{#if this.end}}
                             {{this.start}} to {{this.end}}
                             {{else}}
@@ -88,58 +85,78 @@
 
 
                       </div>
-                      <div class="row">
+                      <div class="my-3">
                         <p>
                           {{this.summary}}
                         </p>
                       </div>
-                      <div class="row">
-                        <ul class="experience-highlights">
+                      <div>
+                        <ul class="experience-caret-right fa-ul">
                           {{#each this.highlights}}
-                          <li>{{this}}</li>
+                          <li>
+                            <span class="fa-li"><i class="fas fa-caret-right"></i></span>
+                            {{this}}</li>
                           {{/each}}
                         </ul>
                       </div>
+                      <div class="experience-location mb-5">
+                          <span>{{this.location}}</span>
+                      </div>
                     </div>
-
+                    
 
                     {{/each}}
 
-                    <h3>Education</h3>
+                    <h2>Education</h2>
                     {{#each r.education.history}}
                     <div class="experience-block">
-                      <div class="title row">
-                        <h2>{{this.title}}</h2>
-                        <span>{{this.institution}}</span>
-                        <div class="date-range">
-                          {{#if this.end}}
-                          {{this.start}} to {{this.end}}
-                          {{else}}
-                          since {{this.start}}
-                          {{/if}}
+                      <div class="title media">
+                          <div class="media-body employer-title">
+                            <h3>{{this.title}}</h3>
+                            <span>{{this.institution}}</span>
+                            <div class="date-range">
+                              {{#if this.end}}
+                              {{this.start}} to {{this.end}}
+                              {{else}}
+                              since {{this.start}}
+                              {{/if}}
+                            </div>
                         </div>
+                          {{#if (isImage this.url) }}
+                          <img class="align-self-end ml-3" alt="Employer logo" src="{{{this.url}}}" />
+                          {{/if}}
                       </div>
+                    </div>                    
+                    <div class="experience-location mb-5">
+                        <span>{{this.location}}</span>
                     </div>
                     {{/each}}
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="container">
+                    <h2>Skills</h2>
                     {{#each r.skills.sets}}
-                      <h2>{{this.name}}</h2>
-                      <ul class="skills">
+                      <h3>{{this.name}}</h3>
+                      <ul class="skills fa-ul">
                         {{#each this.skills as |key|}}                          
                           {{#each ../../r.skills.list}}                            
                             {{#if (eq this.name key)}}
                               <li>
+                                <span class=fa-li>
+                                <i class="fas fa-caret-right"></i>
+                                </span> 
                                 {{this.name}} 
-                                {{#times 5}}    
-                                  {{#if (lessThan @index (formatLevel this.level))}}                                                                 
-                                    <span>*</span>                                  
-                                  {{else}}
-                                    <span>-</span>                                  
-                                  {{/if}}
-                                {{/times}}
+                                <span class="skill-rating">
+                                  {{#times 5}}    
+                                    {{#if (lessThan @index (formatLevel this.level))}}                                                                 
+                                      <i class="fas fa-star"></i>
+                                    {{else}}
+                                      <i class="far fa-star"></i>
+                                    {{/if}}
+                                  
+                                  {{/times}}
+                                </span>
                               </li>                            
                             {{/if}}
                           {{/each}}
@@ -150,6 +167,8 @@
                 </div>              
           </div>        
       </div>
+    </div>  
+    </div>
     </div>  
 </body>
 
