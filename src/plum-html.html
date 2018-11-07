@@ -15,9 +15,9 @@
   <div id="resume">
     <div id="resume-content">
     <div class="row">
-      <aside class="col-3">
+      <div class="col-3">
         <div class="container p-5"  id="personal-info">
-          <div class="row profile-photo">
+          <div class="row profile-photo pb-4">
             {{#if (isImage r.info.image)}}
               <img width="100%" src="{{{r.info.image}}}"/>
             {{/if}}
@@ -26,7 +26,7 @@
             <h3>Contact Info</h3>
             <ul class="fa-ul">
               <li class="fa-li">
-                <i class="fas fa-phone"></i>
+                <i class="fas fa-mobile-alt"></i>
                 <a href="tel:{{{r.contact.phone}}}">{{r.contact.phone}}</a>
               </li>
              <li class="fa-li">
@@ -48,12 +48,14 @@
               <uL class="fa-ul">
               {{#each r.contact.other}}
               <li class="fa-li">                                             
-                {{this.label}} - <a href="{{{this.value}}}">{{this.value}}</a>                
+                <i class="fas fa-link"></i> <a href="{{{this.value}}}">{{this.value}}</a>                
               </li>
               {{/each}}
             </uL>
           </div>                 
-      </aside>    
+        </div>
+      </div>
+          
       <div class="col-9 container p-5"  id="profile">
         
           <div class="row profile-title pb-5">
@@ -138,7 +140,7 @@
                     <h2>Skills</h2>
                     {{#each r.skills.sets}}
                       <h3>{{this.name}}</h3>
-                      <ul class="skills fa-ul">
+                      <ul class="skills mt-3 fa-ul">
                         {{#each this.skills as |key|}}                          
                           {{#each ../../r.skills.list}}                            
                             {{#if (eq this.name key)}}
