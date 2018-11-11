@@ -19,7 +19,7 @@
         <div class="container p-5"  id="personal-info">
           <div class="row profile-photo pb-4">
             {{#if (isImage r.info.image)}}
-              <img width="100%" src="{{{r.info.image}}}"/>
+              <img class="img-fluid" src="{{{r.info.image}}}"/>
             {{/if}}
           </div>
           <div class="row contact-info">
@@ -48,7 +48,7 @@
               <uL class="fa-ul">
               {{#each r.contact.other}}
               <li class="fa-li">                                             
-                <i class="fas fa-link"></i> <a href="{{{this.value}}}">{{this.value}}</a>                
+                <i class="fas fa-link"></i> <a href="{{{fixLink this.value}}}">{{fixLink this.flavor}}</a>                
               </li>
               {{/each}}
             </uL>
@@ -89,9 +89,7 @@
                       </div>
                       <div class="my-3">
                         <p>
-
-                          {{this.summary}}
-                          
+                          {{fixParagraph this.summary}}
                         </p>
                       </div>
                       <div>
