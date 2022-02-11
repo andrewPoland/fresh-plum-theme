@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.5.0",
-    "ajv": "^6.5.5",
+    "ajv": "^6.12.3",
     "ajv-keywords": "^3.2.0",
     "autoprefixer": "^9.3.1",
     "css-loader": "^1.0.1",
