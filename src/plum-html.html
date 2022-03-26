@@ -48,7 +48,15 @@
               <uL class="fa-ul">
               {{#each r.contact.other}}
               <li class="fa-li">                                             
-                <i class="fas fa-link"></i> <a href="{{{fixLink this.value}}}">{{fixLink this.flavor}}</a>                
+                {{#if (eq this.flavor "github") }}
+                  <i class="fab fa-github"></i> <a href="{{{fixLink this.value}}}">{{fixLink this.flavor}}</a>                
+                {{else if (eq this.flavor "blog") }}
+                  <i class="fas fa-house-user"></i> <a href="{{{fixLink this.value}}}">{{fixLink this.flavor}}</a>                
+                {{else if (eq this.flavor "stackoverflow") }}
+                  <i class="fab fa-stack-overflow"></i> <a href="{{{fixLink this.value}}}">{{fixLink this.flavor}}</a>  
+                {{else}}
+                  <i class="fas fa-link"></i> <a href="{{{fixLink this.value}}}">{{fixLink this.flavor}}</a>  
+                {{/if}}                
               </li>
               {{/each}}
             </uL>
@@ -152,9 +160,9 @@
                                 <span class="skill-rating">
                                   {{#times 5}}    
                                     {{#if (lessThan @index (formatLevel this.level))}}                                                                 
-                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star filled"></i>
                                     {{else}}
-                                      <i class="far fa-star"></i>
+                                      <i class="far fa-star empty"></i>
                                     {{/if}}
                                   
                                   {{/times}}
